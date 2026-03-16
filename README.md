@@ -1,80 +1,53 @@
-\# ACE (Automated Content Engine)
+# ACE (Automated Content Engine)
 
+A Python CLI for batch video processing, modification, and downloading.
 
+---
 
-A Python-based command-line interface (CLI) for batch video processing, modification, and downloading. 
+## Prerequisites
+* **Python 3.x**
+* **FFmpeg** (Must be added to your system PATH)
 
+## Installation & Setup
 
+1. Clone the repository:
+   ```bash
+   git clone <your-repository-url>
+Run the initialization script:
 
-\## Prerequisites
+DOS
+start.bat
+This automatically installs dependencies (rich, yt-dlp, static-ffmpeg), generates the required folder structure, and launches the CLI.
 
-\* Python 3.x
+Directory Structure
+Place your source files in the auto-generated folders before running modules.
 
-\* FFmpeg (Must be installed and added to your system PATH)
+/input_main: Source videos (.mp4, .mov, .mkv).
 
+/input_stitch: Secondary clips for concatenation.
 
+/input_audio: Audio tracks for background mixing (.mp3, .wav).
 
-\## Installation \& Setup
+/downloads: Destination for downloaded media.
 
-1\. Download or clone this repository to your local machine.
+/processed_output: Destination for all final rendered media.
 
-2\. Ensure you only have `ACE.py` and `start.bat` in the root directory.
+Modules
+[1] Ghost Protocol: Alters file metadata and applies randomized speed, gamma, saturation, and noise filters to bypass automated detection.
 
-3\. Run `start.bat`. This script will automatically:
+[2] Hydra Splitter: Analyzes total duration and splits the video exactly at the midpoint.
 
-&#x20;  \* Install the required Python dependencies (`rich`, `yt-dlp`, `static-ffmpeg`).
+[3] Venom Injector: Concatenates a secondary clip to either the start or end of primary videos.
 
-&#x20;  \* Launch the main application.
+[4] Shadow Audio: Injects a secondary audio track at 1% volume.
 
-&#x20;  \* Generate the required input and output directories.
+[5] Velocity Boost: Increases playback speed by 1.25x.
 
+[6] The Harvester: Downloads media via URL. Supports best quality auto-conversion (MP4) or audio extraction (MP3).
 
+Dependencies
+rich: UI and terminal formatting.
 
-\## Directory Structure
+yt-dlp: Media extraction.
 
-Upon initialization, ACE automatically creates the following operational directories. Place your source files in the corresponding folders before running a module.
-
-
-
-\* `input\_main/`: Place source video files here (`.mp4`, `.mov`, `.mkv`).
-
-\* `input\_stitch/`: Place secondary video clips here for concatenation.
-
-\* `input\_audio/`: Place audio files here for background mixing (`.mp3`, `.wav`).
-
-\* `downloads/`: Destination folder for media retrieved via the downloading module.
-
-\* `processed\_output/`: Destination folder for all rendered media.
-
-
-
-\## Operational Modules
-
-
-
-| Module ID | Name | Description |
-
-| :--- | :--- | :--- |
-
-| \*\*1\*\* | \*\*Ghost Protocol\*\* | Modifies video DNA to bypass detection. Applies randomized speed, gamma, saturation, and noise filters. Includes an optional text overlay feature. |
-
-| \*\*2\*\* | \*\*Hydra Splitter\*\* | Analyzes video duration and cuts the file exactly at the midpoint, generating a Part 1 and Part 2. |
-
-| \*\*3\*\* | \*\*Venom Injector\*\* | Stitches a secondary clip (from `input\_stitch`) to either the beginning or end of the primary videos. |
-
-| \*\*4\*\* | \*\*Shadow Audio\*\* | Injects a hidden audio track (from `input\_audio`) into the source videos at 1% volume. |
-
-| \*\*5\*\* | \*\*Velocity Boost\*\* | Accelerates video playback speed by 1.25x to increase viewer retention. |
-
-| \*\*6\*\* | \*\*The Harvester\*\* | Downloads media directly from URLs. Supports auto-conversion to MP4 (Best/1080p/720p) or audio extraction to MP3. |
-
-
-
-\## Dependencies
-
-\* `rich`: Terminal formatting and UI.
-
-\* `yt-dlp`: Media downloading capabilities.
-
-\* `static-ffmpeg`: FFmpeg binary management.
-
+static-ffmpeg: FFmpeg binary management.
